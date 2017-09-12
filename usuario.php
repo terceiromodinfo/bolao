@@ -38,6 +38,9 @@
                         <li>
                             <a class="" href="Apostas.php">Apostas</a>
                         </li>
+                         <li>
+                            <a class="" href="ErroApi.php">Configurações</a>
+                        </li>
                         <li>
                             <a class="" href="Saindo.php">Sair</a>
                         </li>

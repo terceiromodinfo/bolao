@@ -39,7 +39,7 @@ session_start();
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#page-top"></a></li>
                         <li>
-                            <a class="" href="Index.php">Pagina Inicial</a>
+                            <a class="" href="index.php">Pagina Inicial</a>
                         </li>
                         <li>
                             <a class="" href="Apostas.php">Apostas</a>

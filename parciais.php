@@ -1,9 +1,10 @@
-<!DOCTYPE html>
 <?php
-include "./testandoValor.php";
 session_start();
 ?>
-
+<?php
+    include "./testandoValor.php";
+?>
+<!DOCTYPE html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -38,8 +39,13 @@ session_start();
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#page-top"></a></li>
                         <li>
+                            <a class="" href="parciais.php">Pagina Inicial</a>
+                        </li>
+                        
+                        <li>
                             <a class="" href="Saindo.php">Sair</a>
                         </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -63,7 +69,7 @@ session_start();
 
                         <?php
                         conexaoServidor();
-                     
+                       
                         cadastrarTime();
 
                         for ($i = 1; $i < 21; $i++) {
@@ -126,7 +132,11 @@ session_start();
                         <br>
                         <div class="textoPreto">
                             <!--<img class="img-responsive imgCampo" src='img/verde.png'>-->                            
-                            <table class="table table-striped alinharTabela table-hover" style="background: #ebebeb;">
+                            <table class="table table-striped alinharTabela table-hover" style="background: #ebebeb;
+                                   color: black;
+                                   font-size: 20px;
+                                   font-family: cursive;
+                                   font-weight: bold">
                                 <tr class="fundoBraco">
                                     <th>#</th>
                                     <th>Classificação</th>
@@ -151,9 +161,10 @@ session_start();
                                     $dados2 = mysqli_fetch_assoc($res_cliente);
                                     print"<tr class='fundoBraco'>";
                                     print "<a href=''>";
-                                    print "<td>" . $i . "</td>";                                    
+                                    print "<td style='color: DimGray;'>" . $i . "</td>";                                    
                                     print "<td><a href='parciaisUser.php?id=".$dados2['id']."'>" . $dados2 ['nome'] . "</a></td>";
-                                    print "<td>" . $dados2['pontos'] . "</td>";
+                                    print "<td style='color: 
+OrangeRed;'>" . $dados2['pontos'] . "</td>";
                                     print "</a>";
                                     print"</tr>";
                                     
@@ -172,4 +183,3 @@ session_start();
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
-

@@ -1,5 +1,3 @@
-
-
 <?php
     include './testeUsuario.php';
 ?>
@@ -37,9 +35,12 @@
                         <li>
                             <a class="" href="parciais.php">Pagina Inicial</a>
                         </li>
+                        
                         <li>
                             <a class="" href="Saindo.php">Sair</a>
                         </li>
+
+                        
                     </ul>
                 </div>
 
@@ -157,7 +158,7 @@
         <div class="container col-sm-2">
             
         </div>
-           
+            
             <!--Fim Quarta col-sm-2-->
 
             <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->

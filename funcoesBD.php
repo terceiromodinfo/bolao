@@ -1,9 +1,9 @@
 <?php
 
 function conexaoServidor() {
-    $usuario = 'ds7z2myv4vlueu19';
-    $senha = 'rzm8ibkjvd0z5hkp';
-    $host = 'p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+    $usuario = 'root';
+    $senha = '';
+    $host = 'localhost';
     $conn = mysqli_connect($host, $usuario, $senha);
     if (!$conn) {
         die("NÃ£o foi possÃ­vel conectar" . mysqli_error());
@@ -13,7 +13,7 @@ function conexaoServidor() {
     mysqli_query($conn,'SET character_set_connection=utf8');
     mysqli_query($conn,'SET character_set_client=utf8');
     mysqli_query($conn,'SET character_set_results=utf8');
-    $banco = 'ws3ab1vceij8w6zo';
+    $banco = 'bolao';
     $bd = mysqli_select_db($conn,$banco);
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
@@ -21,9 +21,9 @@ function conexaoServidor() {
 }
 
 function getConnection() {
-    $usuario = 'ds7z2myv4vlueu19';
-    $senha = 'rzm8ibkjvd0z5hkp';
-    $host = 'p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+    $usuario = 'root';
+    $senha = '';
+    $host = 'localhost';
     $conn = mysqli_connect($host, $usuario, $senha);
 
     if (!$conn) {
@@ -35,7 +35,7 @@ function getConnection() {
     mysqli_query($conn,'SET character_set_client=utf8');
     mysqli_query($conn,'SET character_set_results=utf8');
 
-    $bd = mysqli_select_db($conn,'ws3ab1vceij8w6zo');
+    $bd = mysqli_select_db($conn,'bolao');
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
     }   
@@ -76,6 +76,14 @@ function atualizarRegistro($sql) {
     } else {
         return false;
     }
+}
+
+function quantDeLinhas($tabela){
+    $sqli = "SELECT COUNT(*) FROM $tabela";
+    $resi = buscaRegistro($sqli);
+    $valori = mysqli_fetch_assoc($resi);
+    $valori = $valori['COUNT(*)'];
+    return $valori;
 }
 
 function cadastrarTime() {

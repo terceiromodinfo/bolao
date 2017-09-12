@@ -4,7 +4,6 @@ include "./funcoesBD.php";
 
 conexaoServidor();
 
-
 /*
  * Logica para somar os pontos de cada usuario
  */
@@ -45,11 +44,8 @@ for ($giros = 1; $giros < 21; $giros++) {
  * Pegando a quantidade de apostadores.
  */
 
-$sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
-$resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
-
-$valorDeUsuarios = mysqli_fetch_assoc($resQuantidadeDeApostador);
-$valorDeUsuarios = $valorDeUsuarios['COUNT(*)'];
+$valorDeUsuarios = quantDeLinhas("usuario");
+ 
 /*
  * pegando os id dos apostadores 
  */
@@ -66,11 +62,7 @@ while ($registro = mysqli_fetch_assoc($resIdApostador)) {
  * Saber quantos artilheiros
  */
 
-$sqlQuantidadeDeArtilheiro = "SELECT COUNT(*) FROM artilheiro";
-$resQuantidadeDeArtilheiro = buscaRegistro($sqlQuantidadeDeArtilheiro);
-
-$QuantidadeDeArtilheiro = mysqli_fetch_assoc($resQuantidadeDeArtilheiro);
-$QuantidadeDeArtilheiro = $QuantidadeDeArtilheiro['COUNT(*)'];
+$QuantidadeDeArtilheiro = quantDeLinhas("artilheiro");
 
 /*
  * pegando os id dos artilheiros 
@@ -198,11 +190,7 @@ if ($valorDeUsuarios > 1) {
  * Pegando a quantidades de apostadores na ordem crecente do banco
  */
 
-$sqlOrdemApostadores = "SELECT COUNT(*) FROM apostadores";
-$resOrdemApostadores = buscaRegistro($sqlOrdemApostadores);
-
-$valorOrdemApostadores = mysqli_fetch_assoc($resOrdemApostadores);
-$valorOrdemApostadores = $valorOrdemApostadores['COUNT(*)'];
+$valorOrdemApostadores = quantDeLinhas("apostadores");
 
 /*
  * Fasendo uma consulta para saber se te algo na tabela apostadores
