@@ -1,0 +1,198 @@
+.corNavegar {
+    color: yellow;
+}
+
+.corpo {
+    background: #D3D3D3;
+}
+
+.corFundoAzul {
+    background: #00008B;
+}
+
+.margemTabela {
+    margin-top: 100px;
+}
+
+.corLinhaTituloTabela {
+    background: #FFFFFF;
+}
+
+.corLibertadores {
+    color: #0000FF;
+}
+
+.corPreLibertadores {
+color : #00BFFF;
+}
+
+.corSulAmericana {
+    color: #228B22;
+}
+
+.corReibaxamento {
+    color: #FF0000;
+}
+
+.margemCriterioDesempate {
+    margin-left: -80px;
+}
+
+.imgBrasileirao {
+    margin-top: 35px;
+    margin-left: -60px;
+}
+
+.fundoJogo:before {
+  
+}
+
+.imgCampo {
+    margin-top: 17px;
+}
+
+.CorColunaTabela {
+    background: #DCDCDC;
+}
+
+.corNavegar {
+    color: yellow;
+}
+
+.corpo {
+    background: #D3D3D3;
+    /*background-image: url("img/001.jpg");*/
+}
+
+.corFundoAzul {
+    background: #00008B;
+}
+
+.margemTabela {
+    margin-top: 200px;
+}
+
+.corLinhaTituloTabela {
+    background: #FFFFFF;
+}
+.Ptopo {
+    margin-top: 155px;
+}
+
+.topoUsuario1 {
+    margin-top: 82px; 
+}
+.corNavegar {
+    color: yellow;
+}
+
+.corpo {
+    background: #D3D3D3;
+}
+
+.corFundoAzul {
+    background: #00008B;
+}
+
+.margemTabela {
+    margin-top: 100px;
+}
+
+.corLinhaTituloTabela {
+    background: #FFFFFF;
+}
+
+.corLibertadores {
+    color: #0000FF;
+}
+
+.corPreLibertadores {
+color : #00BFFF;
+}
+
+.corSulAmericana {
+    color: #228B22;
+}
+
+.corReibaxamento {
+    color: #FF0000;
+}
+
+.margemCriterioDesempate {
+    margin-left: -80px;
+}
+
+.imgBrasileirao {
+    margin-top: 35px;
+    margin-left: -60px;
+}
+
+.fundoJogo:before {
+  
+}
+
+.imgCampo {
+    margin-top: 17px;
+}
+
+.CorColunaTabela {
+    background: #DCDCDC;
+}
+
+.corNavegar {
+    color: yellow;
+}
+
+.corpo {
+    background: #D3D3D3;
+    /*background-image: url("img/001.jpg");*/
+}
+
+.corFundoAzul {
+    background: #00008B;
+}
+
+.margemTabela {
+    margin-top: 200px;
+}
+
+.corLinhaTituloTabela {
+    background: #FFFFFF;
+}
+.topo {
+    margin-top: 155px;
+}
+
+.topoUsuario {
+    margin-top: 82px; 
+}
+.fundo{
+    background-image: url(img/verde.png);
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: fixed;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    padding: 4%;
+ 
+}
+
+.tr{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
