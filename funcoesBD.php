@@ -15,7 +15,7 @@ function conexaoServidor() {
 }
 
 function selecionarBancoDados() {
-    $banco = '3306/ws3ab1vceij8w6zo';
+    $banco = 'ws3ab1vceij8w6zo';
     $bd = mysqli_select_db($banco);
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
