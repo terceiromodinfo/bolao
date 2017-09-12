@@ -15,7 +15,7 @@ function conexaoServidor() {
 }
 
 function selecionarBancoDados() {
-    $banco = 'mysql://ds7z2myv4vlueu19:rzm8ibkjvd0z5hkp@p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ws3ab1vceij8w6zo';
+    $banco = "mysql://ds7z2myv4vlueu19:rzm8ibkjvd0z5hkp@p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ws3ab1vceij8w6zo";
     $bd = mysqli_select_db($banco);
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
