@@ -3,7 +3,7 @@
 $post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     conexaoServidor();
-    selecionarBancoDados();
+    
     
     $nome = $post['usuario'];
     $um = $post['1'];

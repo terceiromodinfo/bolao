@@ -1,8 +1,8 @@
-
 <?php
 session_start();
-include "./testandoValor.php";
-
+?>
+<?php
+    include "./testandoValor.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -74,7 +74,7 @@ include "./testandoValor.php";
 
                         <?php
                         conexaoServidor();
-                        selecionarBancoDados();
+                       
                         cadastrarTime();
 
                         for ($i = 1; $i < 21; $i++) {
@@ -149,14 +149,15 @@ include "./testandoValor.php";
                                 </tr>
                                 <?php
                                 conexaoServidor();
-                                selecionarBancoDados();
+                                
                                 function passar(){
                                     header('Location: testeUsuario.php'); 
                                 }
                                 
                                 $selecionarApostadores = "SELECT COUNT(*) FROM apostadores";
                                 $resOrdemApostadores = buscaRegistro($selecionarApostadores);
-                                $quantidadeApostadores = mysqli_result($resOrdemApostadores, 0);
+                                $quantidadeApostadores = mysqli_fetch_assoc($resOrdemApostadores);
+                                $quantidadeApostadores = $quantidadeApostadores['COUNT(*)'];
                                 
                                 for ($i = 1; $i <= $quantidadeApostadores; $i++) {
                                     

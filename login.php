@@ -59,7 +59,7 @@
 <?php
 include './funcoesBD.php';
 conexaoServidor();
-selecionarBancoDados();
+
 $txtTitulo = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 if (isset($txtTitulo['logar'])) {
     $login = $txtTitulo['login'];

@@ -63,7 +63,7 @@ session_start();
 
                         <?php
                         conexaoServidor();
-                        selecionarBancoDados();
+                     
                         cadastrarTime();
 
                         for ($i = 1; $i < 21; $i++) {
@@ -134,14 +134,15 @@ session_start();
                                 </tr>
                                 <?php
                                 conexaoServidor();
-                                selecionarBancoDados();
+                                
                                 function passar(){
                                     header('Location: testeUsuario.php'); 
                                 }
                                 
                                 $selecionarApostadores = "SELECT COUNT(*) FROM apostadores";
                                 $resOrdemApostadores = buscaRegistro($selecionarApostadores);
-                                $quantidadeApostadores = mysqli_result($resOrdemApostadores, 0);
+                                $quantidadeApostadores = mysqli_fetch_assoc($resOrdemApostadores);
+                                $quantidadeApostadores = $quantidadeApostadores['COUNT(*)'];
                                 
                                 for ($i = 1; $i <= $quantidadeApostadores; $i++) {
                                     

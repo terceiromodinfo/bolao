@@ -2,7 +2,7 @@
 include "./funcoesBD.php";
 
 conexaoServidor();
-selecionarBancoDados();
+
 
 $post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 

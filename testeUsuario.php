@@ -1,7 +1,7 @@
 <?php
 include './funcoesBD.php';
 conexaoServidor();
-selecionarBancoDados();
+
 
 $idUser = $_GET['id'];
 

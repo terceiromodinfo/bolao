@@ -3,7 +3,7 @@
 include "./funcoesBD.php";
 
 conexaoServidor();
-selecionarBancoDados();
+
 
 /*
  * Logica para somar os pontos de cada usuario
@@ -48,8 +48,8 @@ for ($giros = 1; $giros < 21; $giros++) {
 $sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
 $resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
 
-$valorDeUsuarios = mysqli_result($resQuantidadeDeApostador, 0);
-
+$valorDeUsuarios = mysqli_fetch_assoc($resQuantidadeDeApostador);
+$valorDeUsuarios = $valorDeUsuarios['COUNT(*)'];
 /*
  * pegando os id dos apostadores 
  */
@@ -69,7 +69,8 @@ while ($registro = mysqli_fetch_assoc($resIdApostador)) {
 $sqlQuantidadeDeArtilheiro = "SELECT COUNT(*) FROM artilheiro";
 $resQuantidadeDeArtilheiro = buscaRegistro($sqlQuantidadeDeArtilheiro);
 
-$QuantidadeDeArtilheiro = mysqli_result($resQuantidadeDeArtilheiro, 0);
+$QuantidadeDeArtilheiro = mysqli_fetch_assoc($resQuantidadeDeArtilheiro);
+$QuantidadeDeArtilheiro = $QuantidadeDeArtilheiro['COUNT(*)'];
 
 /*
  * pegando os id dos artilheiros 
@@ -109,8 +110,9 @@ for ($giros2 = 1; $giros2 <= $valorDeUsuarios; $giros2++) {
 
     $sql2 = "SELECT usuario FROM usuario WHERE id = $id";
     $res_cliente2 = buscaRegistro($sql2);
-    $nome = mysqli_result($res_cliente2, 0);
-
+    $nome = mysqli_fetch_assoc($res_cliente2);
+    $nome = $nome['usuario'];
+    
     /*
      * Adicionando as apostas no array para o algoritomo de de pontuação
      */
@@ -199,20 +201,21 @@ if ($valorDeUsuarios > 1) {
 $sqlOrdemApostadores = "SELECT COUNT(*) FROM apostadores";
 $resOrdemApostadores = buscaRegistro($sqlOrdemApostadores);
 
-$valorOrdemApostadores = mysqli_result($resOrdemApostadores, 0);
+$valorOrdemApostadores = mysqli_fetch_assoc($resOrdemApostadores);
+$valorOrdemApostadores = $valorOrdemApostadores['COUNT(*)'];
 
 /*
  * Fasendo uma consulta para saber se te algo na tabela apostadores
  */
 
-$consulta = mysqli_query("SELECT * FROM apostadores");
+$consulta = dadosExitente();
 $posicao = 1;
 
 /*
  * Apaga todos os gegistro se ouver algum apostador na tabela
  */
 
-if (mysqli_num_rows($consulta) > 0) {
+if ($consulta > 0) {
     
     for ($f = 1; $f <= $valorOrdemApostadores; $f++) {
         $sql = "DELETE FROM apostadores WHERE apostadores.posicao = $f;";

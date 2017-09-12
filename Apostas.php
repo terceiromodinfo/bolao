@@ -4,7 +4,7 @@ include "funcoesBD.php";
 ?>
 <?php header("Content-type: text/html; charset=utf-8");
 conexaoServidor();
-selecionarBancoDados();?>
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>

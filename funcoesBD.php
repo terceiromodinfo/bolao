@@ -1,29 +1,57 @@
 <?php
-$conn;
+
 function conexaoServidor() {
-    $usuario = 'ds7z2myv4vlueu19';
-    $senha = 'rzm8ibkjvd0z5hkp';
-    $host = 'p1us8ottbqwio8hv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+    $usuario = 'root';
+    $senha = '';
+    $host = 'localhost';
     $conn = mysqli_connect($host, $usuario, $senha);
     if (!$conn) {
         die("NÃ£o foi possÃ­vel conectar" . mysqli_error());
     }
-    mysqli_query("SET NAMES 'utf8'");
-    mysqli_query('SET character_set_connection=utf8');
-    mysqli_query('SET character_set_client=utf8');
-    mysqli_query('SET character_set_results=utf8');
-}
-
-function selecionarBancoDados() {
-    $banco = 'ws3ab1vceij8w6zo';
+    
+    mysqli_query($conn,"SET NAMES 'utf8'");
+    mysqli_query($conn,'SET character_set_connection=utf8');
+    mysqli_query($conn,'SET character_set_client=utf8');
+    mysqli_query($conn,'SET character_set_results=utf8');
+    $banco = 'bolao';
     $bd = mysqli_select_db($conn,$banco);
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
     }
 }
 
+function getConnection() {
+    $usuario = 'root';
+    $senha = '';
+    $host = 'localhost';
+    $conn = mysqli_connect($host, $usuario, $senha);
+
+    if (!$conn) {
+        die("NÃ£o foi possÃ­vel conectar" . mysqli_error());
+    }
+
+    mysqli_query($conn,"SET NAMES 'utf8'");
+    mysqli_query($conn,'SET character_set_connection=utf8');
+    mysqli_query($conn,'SET character_set_client=utf8');
+    mysqli_query($conn,'SET character_set_results=utf8');
+
+    $bd = mysqli_select_db($conn,'bolao');
+    if (!$bd) {
+        die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
+    }   
+    
+    return $conn;
+}
+
+function dadosExitente() {
+    $consulta = mysqli_query(getConnection(),"SELECT * FROM apostadores");
+    
+    return mysqli_num_rows($consulta);
+}
+
 function inserir($sql) {
-    if (mysqli_query($sql)) {
+    
+    if (mysqli_query(getConnection(), $sql)) {
         return true;
     } else {
         return false;
@@ -31,11 +59,11 @@ function inserir($sql) {
 }
 
 function buscaRegistro($sql) {
-    return mysqli_query($sql);
+    return mysqli_query(getConnection(), $sql);
 }
 
 function excluir($sql) {
-    if (mysqli_query($sql)) {
+    if (mysqli_query(getConnection(), $sql)) {
         return true;
     } else {
         return false;
@@ -43,7 +71,7 @@ function excluir($sql) {
 }
 
 function atualizarRegistro($sql) {
-    if (mysqli_query($sql)) {
+    if (mysqli_query(getConnection(),$sql)) {
         return true;
     } else {
         return false;
@@ -60,7 +88,7 @@ function cadastrarTime() {
     if ($escolha == 2) {
 
         conexaoServidor();
-        selecionarBancoDados();
+        
         /* 1. Cria recurso [objeto] do tipo CURL */
         $ch = curl_init();
 
@@ -82,7 +110,7 @@ function cadastrarTime() {
 
         
 
-        $consulta = mysqli_query("select * from times");
+        $consulta = mysqli_query(getConnection(),"select * from times");
         if (mysqli_num_rows($consulta) > 0) {
             //echo "TEM DADOS NA TABELA";
             echo "</br>";
