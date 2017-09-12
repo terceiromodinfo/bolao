@@ -6,12 +6,12 @@ conexaoServidor();
 
 $post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-if (isset($post['ApagarUsuario'])){
+if (isset($post['ApagarUsuario'])) {
     $sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
     $resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
 
     $valorDeUsuarios = mysqli_result($resQuantidadeDeApostador, 0);
-    
+
     /*
      * pegando os id dos apostadores 
      */
@@ -24,49 +24,63 @@ if (isset($post['ApagarUsuario'])){
         $idUsuario[$contador] = $registro['id'];
         $contador++;
     }
-    
 
-    for ($i=1;$i <= $valorDeUsuarios;$i++){
-        
+
+    for ($i = 1; $i <= $valorDeUsuarios; $i++) {
+
         $sql = "DELETE FROM usuario WHERE usuario.id = $idUsuario[$i]";
         excluir($sql);
-  
     }
 }
-if (isset($post['ApagarTimes'])){
-    for ($i=1;$i <= 20;$i++){
-        
+if (isset($post['ApagarTimes'])) {
+    for ($i = 1; $i <= 20; $i++) {
+
         $sql = "DELETE FROM times WHERE times.posicao = $i";
         excluir($sql);
-  
     }
 }
-if (isset($post['manual'])){
+if (isset($post['manual'])) {
     $consulta = mysqli_query("select api from admin");
-   
-            
-            $sql = "UPDATE admin SET api = '1'";
-            atualizarRegistro($sql);
-        
-        
-    
-    
+
+
+    $sql = "UPDATE admin SET api = '1'";
+    atualizarRegistro($sql);
 }
-if (isset($post['api'])){
+if (isset($post['api'])) {
     $consulta = mysqli_query("select api from admin");
+
+    $sql = "UPDATE admin SET api = '2'";
+    atualizarRegistro($sql);
+}
+
+if (isset($post['cadastraTimes'])) {
     
+    for ($a=1;$a <= 20; $a++){
+        $nomeDoTimes[$a] = $post["$a"];
+    }
+    
+    
+            for ($i = 0; $i < 20; $i++) {
+                $posicao = $i + 1;
+                $sql = "DELETE FROM times WHERE times.posicao = $posicao;";
+                excluir($sql);
+            }
+    
+            for ($i = 0; $i < 20; $i++) {
+                $posicao = $i + 1;
+                $Nome = $nomeDoTimes[$i];
+                $sql = "INSERT INTO times (posicao,nome) VALUES ('$posicao','$Nome')";
+                inserir($sql);
+            }
         
-            $sql = "UPDATE admin SET api = '2'";
-            atualizarRegistro($sql);
+}
+if (isset($post['cadastraArtilheiro'])) {
     
 }
 $sqlApiOuManual = "SELECT api FROM admin";
 $resApiOuManual = buscaRegistro($sqlApiOuManual);
 $ApiOuManual = mysqli_fetch_assoc($resApiOuManual);
 $escolha = $ApiOuManual['api'];
-
-
-    
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -100,7 +114,7 @@ $escolha = $ApiOuManual['api'];
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#page-top"></a></li>
                         <li>
-                            <a class="" href="homer.php">Pagina Inicial</a>
+                            <a class="" href="index.php">Pagina Inicial</a>
                         </li>
                         <li>
                             <a class="" href="Apostas.php">Apostas</a>
@@ -119,20 +133,20 @@ $escolha = $ApiOuManual['api'];
 
         <div class="borda"> 
             <div class=" col-sm-12" style="background: window;">
-                
+
                 <br><br>
                 <div class="col-sm-6">
-                <h2 aling="center">Inserir as informações manualmente</h2>
+                    <h2 aling="center">Inserir as informações manualmente</h2>
                 </div>
                 <div class="col-sm-6">
                     <h2 style="">Modo de preenchimento da tabela do brasileirão</h2>
                 </div>    
-                </div>
+            </div>
             <div class="col-sm-6">
-             
+
 
                 <div align="center">
-                            
+
 
                     <div class="form-group" align="center">
 
@@ -145,33 +159,32 @@ $escolha = $ApiOuManual['api'];
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="1º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="2º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="3º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="4º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="5º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="6º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="7º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="8º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="9º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="10º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="11º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="12º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="13º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="14º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="15º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="16º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="17º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="18º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="19º colocado">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="20º colocado">
+                                    <input type="text" class="form-control" name="1"  placeholder="1º colocado">
+                                    <input type="text" class="form-control" name="2" placeholder="2º colocado">
+                                    <input type="text" class="form-control" name="3" placeholder="3º colocado">
+                                    <input type="text" class="form-control" name="4" placeholder="4º colocado">
+                                    <input type="text" class="form-control" name="5" placeholder="5º colocado">
+                                    <input type="text" class="form-control" name="6" placeholder="6º colocado">
+                                    <input type="text" class="form-control" name="7" placeholder="7º colocado">
+                                    <input type="text" class="form-control" name="8" placeholder="8º colocado">
+                                    <input type="text" class="form-control" name="9" placeholder="9º colocado">
+                                    <input type="text" class="form-control" name="10" placeholder="10º colocado">
+                                    <input type="text" class="form-control" name="11" placeholder="11º colocado">
+                                    <input type="text" class="form-control" name="12" placeholder="12º colocado">
+                                    <input type="text" class="form-control" name="13" placeholder="13º colocado">
+                                    <input type="text" class="form-control" name="14" placeholder="14º colocado">
+                                    <input type="text" class="form-control" name="15" placeholder="15º colocado">
+                                    <input type="text" class="form-control" name="16" placeholder="16º colocado">
+                                    <input type="text" class="form-control" name="17" placeholder="17º colocado">
+                                    <input type="text" class="form-control" name="18" placeholder="18º colocado">
+                                    <input type="text" class="form-control" name="19" placeholder="19º colocado">
+                                    <input type="text" class="form-control" name="20" placeholder="20º colocado">
 
                                 </div>
+                                <input type="submit" class="btn btn-success" name="cadastraTimes" value="Guardar"/>
 
                             </form>
-                            <button type="button" class="btn btn-success">Cadastrar</button>
 
-                            <button type="button" class="btn btn-success">Atualizar</button>
                         </div>
 
                         <div class="container col-sm-6">
@@ -179,23 +192,23 @@ $escolha = $ApiOuManual['api'];
                                 <label>Artilheros:</label>
                             </div>
 
-
-                            <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                <br>
-                                <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                <br>
-                                <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                <br> 
-                                <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                <br>
-                                <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                <br>
-                                <button type="button" class="btn btn-success">Cadastrar</button>
-                                <button type="button" class="btn btn-success">Atualizar</button>
-                                <br>
-                                <br>
-                            </div>
+                            <form action="" method="POST">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <br>
+                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <br>
+                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <br> 
+                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <br>
+                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <br>
+                                    <input type="submit" class="btn btn-success" name="cadastraArtilheiro" value="Guardar"/>
+                                    <br>
+                                    <br>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -204,22 +217,25 @@ $escolha = $ApiOuManual['api'];
 
             <div class="bordad">
                 <div class="container col-sm-6 thumbnail" >
-                    
+
                     <br>
                     <form action="" method="POST">
-                    <input type="submit" class="btn btn-success" name="api" value="API"/>
-                    <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
+                        <input type="submit" class="btn btn-success" name="api" value="API"/>
+                        <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
                     </form>
                     <br>
                     <br>
                     <div class="form-group">
-                        <h4>Preenchimento do banco de dados     <label style="color: #0000FF;"><?php 
-                                    if ($escolha == 2){
-                                        print "API";
-                                    }  else {
-                                        print "Manual";
-                                    }
-                                ?></label></h4>
+                        <h4>Preenchimento do banco de dados     
+                            <label style="color: #0000FF;">
+                                <?php
+                                if ($escolha == 2) {
+                                    print "API";
+                                } else {
+                                    print "Manual";
+                                }
+                                ?>
+                            </label></h4>
                     </div>
 
                     <div class="borda"><!--  --><!--  --><!--  -->
@@ -230,11 +246,11 @@ $escolha = $ApiOuManual['api'];
 
                         <br>
                         <form action="" method="POST">
-                        <h2>Apagar todos os apostadores  </h2>
-                        <input type="submit" name="ApagarUsuario" value="Apagar"/>
+                            <h2>Apagar todos os apostadores  </h2>
+                            <input type="submit" name="ApagarUsuario" value="Apagar"/>
 
-                        <h2>Apagar todos os dados dos times</h2>
-                        <input type="submit" name="ApagarTimes" value="Apagar"/>
+                            <h2>Apagar todos os dados dos times</h2>
+                            <input type="submit" name="ApagarTimes" value="Apagar"/>
                         </form>
                         <br><br><br><br>
                     </div>
