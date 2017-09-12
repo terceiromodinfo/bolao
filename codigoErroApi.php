@@ -25,7 +25,7 @@ if (isset($post['ApagarUsuario'])){
     $sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
     $resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
 
-    $valorDeUsuarios = mysql_result($resQuantidadeDeApostador, 0);
+    $valorDeUsuarios = mysqli_result($resQuantidadeDeApostador, 0);
     
     /*
      * pegando os id dos apostadores 
@@ -35,7 +35,7 @@ if (isset($post['ApagarUsuario'])){
     $resIdApostador = buscaRegistro($sqlIdApostador);
 
     $contador = 1;
-    while ($registro = mysql_fetch_assoc($resIdApostador)) {
+    while ($registro = mysqli_fetch_assoc($resIdApostador)) {
         $idUsuario[$contador] = $registro['id'];
         $contador++;
     }
@@ -57,7 +57,7 @@ if (isset($post['ApagarTimes'])){
     }
 }
 if (isset($post['manual'])){
-    $consulta = mysql_query("select api from admin");
+    $consulta = mysqli_query("select api from admin");
    
             
             $sql = "UPDATE admin SET api = '1'";
@@ -68,7 +68,7 @@ if (isset($post['manual'])){
     
 }
 if (isset($post['api'])){
-    $consulta = mysql_query("select api from admin");
+    $consulta = mysqli_query("select api from admin");
     
         
             $sql = "UPDATE admin SET api = '2'";
@@ -77,7 +77,7 @@ if (isset($post['api'])){
 }
 $sqlApiOuManual = "SELECT api FROM admin";
 $resApiOuManual = buscaRegistro($sqlApiOuManual);
-$ApiOuManual = mysql_fetch_assoc($resApiOuManual);
+$ApiOuManual = mysqli_fetch_assoc($resApiOuManual);
 $escolha = $ApiOuManual['api'];
 
 if ($escolha == 2) {

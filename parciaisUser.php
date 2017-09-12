@@ -157,11 +157,8 @@
         <div class="container col-sm-2">
             
         </div>
-            
-            
-            
+           
             <!--Fim Quarta col-sm-2-->
-
 
             <!-- jQuery (obrigatório para plugins JavaScript do Bootstrap) -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

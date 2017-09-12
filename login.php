@@ -70,7 +70,7 @@ if (isset($txtTitulo['logar'])) {
     $res_administrador = buscaRegistro($sql);
 
 
-    $linhas = mysql_num_rows($res_administrador);
+    $linhas = mysqli_num_rows($res_administrador);
 
 
     if ($linhas > 0) {

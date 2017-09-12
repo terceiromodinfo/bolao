@@ -69,7 +69,7 @@ session_start();
                         for ($i = 1; $i < 21; $i++) {
                             $sql = "SELECT * FROM times WHERE posicao = $i";
                             $res_cliente = buscaRegistro($sql);
-                            $dados2 = mysql_fetch_assoc($res_cliente);
+                            $dados2 = mysqli_fetch_assoc($res_cliente);
                                                        
                                 $classe = 0;
                                 if ($i < 5) {
@@ -141,13 +141,13 @@ session_start();
                                 
                                 $selecionarApostadores = "SELECT COUNT(*) FROM apostadores";
                                 $resOrdemApostadores = buscaRegistro($selecionarApostadores);
-                                $quantidadeApostadores = mysql_result($resOrdemApostadores, 0);
+                                $quantidadeApostadores = mysqli_result($resOrdemApostadores, 0);
                                 
                                 for ($i = 1; $i <= $quantidadeApostadores; $i++) {
                                     
                                     $sql = "SELECT * FROM apostadores WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     print"<tr class='fundoBraco'>";
                                     print "<a href=''>";
                                     print "<td>" . $i . "</td>";                                    

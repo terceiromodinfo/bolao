@@ -4,26 +4,26 @@ function conexaoServidor() {
     $usuario = 'root';
     $senha = '';
     $host = 'localhost';
-    $conn = mysql_connect($host, $usuario, $senha);
+    $conn = mysqli_connect($host, $usuario, $senha);
     if (!$conn) {
-        die("NÃ£o foi possÃ­vel conectar" . mysql_error());
+        die("NÃ£o foi possÃ­vel conectar" . mysqli_error());
     }
-    mysql_query("SET NAMES 'utf8'");
-    mysql_query('SET character_set_connection=utf8');
-    mysql_query('SET character_set_client=utf8');
-    mysql_query('SET character_set_results=utf8');
+    mysqli_query("SET NAMES 'utf8'");
+    mysqli_query('SET character_set_connection=utf8');
+    mysqli_query('SET character_set_client=utf8');
+    mysqli_query('SET character_set_results=utf8');
 }
 
 function selecionarBancoDados() {
     $banco = 'bolao';
-    $bd = mysql_select_db($banco);
+    $bd = mysqli_select_db($banco);
     if (!$bd) {
-        die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysql_error());
+        die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
     }
 }
 
 function inserir($sql) {
-    if (mysql_query($sql)) {
+    if (mysqli_query($sql)) {
         return true;
     } else {
         return false;
@@ -31,11 +31,11 @@ function inserir($sql) {
 }
 
 function buscaRegistro($sql) {
-    return mysql_query($sql);
+    return mysqli_query($sql);
 }
 
 function excluir($sql) {
-    if (mysql_query($sql)) {
+    if (mysqli_query($sql)) {
         return true;
     } else {
         return false;
@@ -43,7 +43,7 @@ function excluir($sql) {
 }
 
 function atualizarRegistro($sql) {
-    if (mysql_query($sql)) {
+    if (mysqli_query($sql)) {
         return true;
     } else {
         return false;
@@ -53,7 +53,7 @@ function atualizarRegistro($sql) {
 function cadastrarTime() {
     $sqlApiOuManual = "SELECT api FROM admin";
     $resApiOuManual = buscaRegistro($sqlApiOuManual);
-    $ApiOuManual = mysql_fetch_assoc($resApiOuManual);
+    $ApiOuManual = mysqli_fetch_assoc($resApiOuManual);
     $escolha = $ApiOuManual['api'];
   
     
@@ -82,8 +82,8 @@ function cadastrarTime() {
 
         
 
-        $consulta = mysql_query("select * from times");
-        if (mysql_num_rows($consulta) > 0) {
+        $consulta = mysqli_query("select * from times");
+        if (mysqli_num_rows($consulta) > 0) {
             //echo "TEM DADOS NA TABELA";
             echo "</br>";
             for ($i = 0; $i < 20; $i++) {

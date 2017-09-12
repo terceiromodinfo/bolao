@@ -83,7 +83,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -97,7 +97,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -111,7 +111,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -125,7 +125,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -141,7 +141,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -155,7 +155,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -169,7 +169,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }
@@ -183,7 +183,7 @@ selecionarBancoDados();?>
                                 for ($i = 1; $i < 21; $i++) {
                                     $sql = "SELECT nome FROM times WHERE posicao = $i";
                                     $res_cliente = buscaRegistro($sql);
-                                    $dados2 = mysql_fetch_assoc($res_cliente);
+                                    $dados2 = mysqli_fetch_assoc($res_cliente);
                                     $A = "<option>" . $dados2['nome'] . "</option>";
                                     print $A;
                                 }

@@ -28,7 +28,7 @@ for ($giros = 1; $giros < 21; $giros++) {
 
     $sql = "SELECT * FROM times WHERE posicao = $giros";
     $res_cliente = buscaRegistro($sql);
-    $registro = mysql_fetch_assoc($res_cliente);
+    $registro = mysqli_fetch_assoc($res_cliente);
 
     /*
      * If servira para adicionar apenas os quatros primeiros
@@ -48,7 +48,7 @@ for ($giros = 1; $giros < 21; $giros++) {
 $sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
 $resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
 
-$valorDeUsuarios = mysql_result($resQuantidadeDeApostador, 0);
+$valorDeUsuarios = mysqli_result($resQuantidadeDeApostador, 0);
 
 /*
  * pegando os id dos apostadores 
@@ -58,7 +58,7 @@ $sqlIdApostador = "SELECT id FROM usuario";
 $resIdApostador = buscaRegistro($sqlIdApostador);
 
 $contador = 1;
-while ($registro = mysql_fetch_assoc($resIdApostador)) {
+while ($registro = mysqli_fetch_assoc($resIdApostador)) {
     $idUsuario[$contador] = $registro['id'];
     $contador++;
 }
@@ -69,7 +69,7 @@ while ($registro = mysql_fetch_assoc($resIdApostador)) {
 $sqlQuantidadeDeArtilheiro = "SELECT COUNT(*) FROM artilheiro";
 $resQuantidadeDeArtilheiro = buscaRegistro($sqlQuantidadeDeArtilheiro);
 
-$QuantidadeDeArtilheiro = mysql_result($resQuantidadeDeArtilheiro, 0);
+$QuantidadeDeArtilheiro = mysqli_result($resQuantidadeDeArtilheiro, 0);
 
 /*
  * pegando os id dos artilheiros 
@@ -79,7 +79,7 @@ $sqlIdArtilheiro = "SELECT id FROM artilheiro";
 $resIdArtilheiro = buscaRegistro($sqlIdArtilheiro);
 
 $contador2 = 1;
-while ($registroIdArtilheiro = mysql_fetch_assoc($resIdArtilheiro)) {
+while ($registroIdArtilheiro = mysqli_fetch_assoc($resIdArtilheiro)) {
     $IdArtilheiro[$contador2] = $registroIdArtilheiro['id'];
     $contador2++;
 }
@@ -98,7 +98,7 @@ for ($giros2 = 1; $giros2 <= $valorDeUsuarios; $giros2++) {
     $id = $idUsuario[$giros2];
     $sqlPesquisaId = "SELECT * FROM usuario WHERE id = $id";
     $resPesquisaId = buscaRegistro($sqlPesquisaId);
-    $registroDoId = mysql_fetch_assoc($resPesquisaId);
+    $registroDoId = mysqli_fetch_assoc($resPesquisaId);
     
 
 
@@ -109,7 +109,7 @@ for ($giros2 = 1; $giros2 <= $valorDeUsuarios; $giros2++) {
 
     $sql2 = "SELECT usuario FROM usuario WHERE id = $id";
     $res_cliente2 = buscaRegistro($sql2);
-    $nome = mysql_result($res_cliente2, 0);
+    $nome = mysqli_result($res_cliente2, 0);
 
     /*
      * Adicionando as apostas no array para o algoritomo de de pontuação
@@ -167,7 +167,7 @@ for ($giros2 = 1; $giros2 <= $valorDeUsuarios; $giros2++) {
 
         $sqlNomeArtilheiro = "SELECT nome FROM artilheiro WHERE id = $idArt";
         $resNomeArtilheiro = buscaRegistro($sqlNomeArtilheiro);
-        $NomeArtilheiro = mysql_fetch_assoc($resNomeArtilheiro);
+        $NomeArtilheiro = mysqli_fetch_assoc($resNomeArtilheiro);
 
         $AtilheroFinal = $NomeArtilheiro['nome'];
         
@@ -199,20 +199,20 @@ if ($valorDeUsuarios > 1) {
 $sqlOrdemApostadores = "SELECT COUNT(*) FROM apostadores";
 $resOrdemApostadores = buscaRegistro($sqlOrdemApostadores);
 
-$valorOrdemApostadores = mysql_result($resOrdemApostadores, 0);
+$valorOrdemApostadores = mysqli_result($resOrdemApostadores, 0);
 
 /*
  * Fasendo uma consulta para saber se te algo na tabela apostadores
  */
 
-$consulta = mysql_query("SELECT * FROM apostadores");
+$consulta = mysqli_query("SELECT * FROM apostadores");
 $posicao = 1;
 
 /*
  * Apaga todos os gegistro se ouver algum apostador na tabela
  */
 
-if (mysql_num_rows($consulta) > 0) {
+if (mysqli_num_rows($consulta) > 0) {
     
     for ($f = 1; $f <= $valorOrdemApostadores; $f++) {
         $sql = "DELETE FROM apostadores WHERE apostadores.posicao = $f;";
