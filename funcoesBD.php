@@ -1,5 +1,5 @@
 <?php
-
+$conn;
 function conexaoServidor() {
     $usuario = 'ds7z2myv4vlueu19';
     $senha = 'rzm8ibkjvd0z5hkp';
@@ -16,7 +16,7 @@ function conexaoServidor() {
 
 function selecionarBancoDados() {
     $banco = 'ws3ab1vceij8w6zo';
-    $bd = mysqli_select_db($banco);
+    $bd = mysqli_select_db($conn,$banco);
     if (!$bd) {
         die("NÃ£o foi possÃ­vel selecionar o banco de dados" . mysqli_error());
     }
