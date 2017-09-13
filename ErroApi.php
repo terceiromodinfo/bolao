@@ -27,16 +27,41 @@ if (isset($post['ApagarUsuario'])) {
     for ($i = 1; $i <= $valorDeUsuarios; $i++) {
 
         $sql = "DELETE FROM usuario WHERE usuario.id = $idUsuario[$i]";
-        excluir($sql);
+        if (excluir($sql)) {
+            $Resut = "1";
+        } else {
+            $Resut = "0";
+        }
+    }
+    if ($Resut == 1) {
+        print "<script>alert(' excluido com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha em excluir!');</script>";
     }
 }
+
+
+
 if (isset($post['ApagarTimes'])) {
     for ($i = 1; $i <= 20; $i++) {
 
         $sql = "DELETE FROM times WHERE times.posicao = $i";
-        excluir($sql);
+        if (excluir($sql)) {
+            $Resut2 = "1";
+        } else {
+            $Resut2 = "0";
+        }
+    }
+    if ($Resut2 == 1) {
+        print "<script>alert(' excluido com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha em excluir!');</script>";
     }
 }
+
+
+
+
 if (isset($post['manual'])) {
     $consulta = mysqli_query("select api from admin");
 
@@ -44,12 +69,16 @@ if (isset($post['manual'])) {
     $sql = "UPDATE admin SET api = '1'";
     atualizarRegistro($sql);
 }
+
+
 if (isset($post['api'])) {
     $consulta = mysqli_query("select api from admin");
 
     $sql = "UPDATE admin SET api = '2'";
     atualizarRegistro($sql);
 }
+
+
 
 if (isset($post['cadastraTimes'])) {
     
@@ -68,19 +97,35 @@ if (isset($post['cadastraTimes'])) {
         $posicao = $i + 1;
         $Nome = $nomeDoTimes[$i];
         $sql = "INSERT INTO times (posicao,nome) VALUES ('$posicao','$Nome')";
-        inserir($sql);
+        if (inserir($sql)) {
+            $Resut3 = "1";
+        } else {
+            $Resut3 = "0";
+        }
+    }
+    if ($Resut3 == 1) {
+        print "<script>alert(' enviado com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha em enviar!');</script>";
     }
 }
+
+
 if (isset($post['cadastraArtilheiro'])) {
-       
-        $nomeDoArtilheiro = $post["arti"];
-        
-        $sql = "INSERT INTO artilheiro (nome) VALUES ('$nomeDoArtilheiro')";
-        inserir($sql);
-       
+
+    $nomeDoArtilheiro = $post["arti"];
+
+    $sql = "INSERT INTO artilheiro (nome) VALUES ('$nomeDoArtilheiro')";
+    if (inserir($sql)) {
+        print "<script>alert(' enviado com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha no envio!');</script>";
+    }
 }
+
+
 if (isset($post['apagarArtilheiro'])) {
-    
+
     $sqlIdArtilheiro = "SELECT id FROM artilheiro";
     $resIdArtilheiro = buscaRegistro($sqlIdArtilheiro);
 
@@ -91,11 +136,33 @@ if (isset($post['apagarArtilheiro'])) {
     }
     $quantArtilheiros = quantDeLinhas("artilheiro");
     for ($a = 1; $a <= $quantArtilheiros; $a++) {
-     print $IdArtilheiro[$a];
+        print $IdArtilheiro[$a];
         $sql = "DELETE FROM artilheiro WHERE artilheiro.id = $IdArtilheiro[$a]";
-        excluir($sql);
-       } 
+        if (excluir($sql)) {
+            $Resut4 = "1";
+        } else {
+            $Resut4 = "0";
+        }
+    }
+    if ($Resut4 == 1) {
+        print "<script>alert(' excluido com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha em excluir!');</script>";
+    }
 }
+if (isset($post['ApagarPeloNome'])) {
+
+    $apagarPeloNome = $post["apagarPeloNome"];
+    print $apagarPeloNome;
+
+    $sql = "DELETE FROM usuario WHERE usuario.usuario = '$apagarPeloNome'";
+    if (excluir($sql)) {
+        print "<script>alert(' excluido com Sucesso!');</script>";
+    } else {
+        print "<script>alert('Falha em excluir !');</script>";
+    }
+}
+
 
 
 $sqlApiOuManual = "SELECT api FROM admin";
@@ -111,7 +178,7 @@ $escolha = $ApiOuManual['api'];
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <title>Bootstrap 101 Template</title>
+        <title>Bolão</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
@@ -128,7 +195,7 @@ $escolha = $ApiOuManual['api'];
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>  
                     </button>
-                    <a href="#pageTop" class="navbar-brand">Logomarca</a>
+                    <a href="#pageTop" class="navbar-brand" style="font-weight: bold">Bolão</a>
                 </div>
 
                 <div class="collapse navbar-collapse menu-navegacao" id="menu-navegacao">
@@ -156,12 +223,11 @@ $escolha = $ApiOuManual['api'];
             <div class=" col-sm-12" style="background: window;">
 
                 <br><br>
+                <div class="col-sm-3"></div>
                 <div class="col-sm-6">
-                    <h2 aling="center">Inserir as informações manualmente</h2>
+                    <h2 aling="center">Configurar as informações manualmente</h2>
                 </div>
-                <div class="col-sm-6">
-                    <h2 style="">Modo de preenchimento da tabela do brasileirão</h2>
-                </div>    
+                   
             </div>
             <div class="col-sm-6">
 
@@ -234,17 +300,20 @@ $escolha = $ApiOuManual['api'];
 
             <div class="bordad">
                 <div class="container col-sm-6 thumbnail" >
-
-                    <br>
-                    <form action="" method="POST">
-                        <input type="submit" class="btn btn-success" name="api" value="API"/>
-                        <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
-                    </form>
-                    <br>
-                    <br>
-                    <div class="form-group">
-                        <h4>Preenchimento do banco de dados     
-                            <label style="color: #0000FF;">
+                    
+                    <div class="col-lg-12">
+                        <br> 
+                        <div class="col-lg-7">
+                            <h4>Escolha uma forma para o cadastro no banco</h4>
+                        </div>
+                        <div class="col-lg-3">
+                            <form action="" method="POST">
+                                <input type="submit" class="btn btn-success" name="api" value="API"/>
+                                <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
+                            </form>
+                        </div>
+                        <div class="col-lg-2">
+                            <h4 style="color: #0000FF;">
                                 <?php
                                 if ($escolha == 2) {
                                     print "API";
@@ -252,25 +321,81 @@ $escolha = $ApiOuManual['api'];
                                     print "Manual";
                                 }
                                 ?>
-                            </label></h4>
-                    </div>
-
-                    <div class="borda"><!--  --><!--  --><!--  -->
-                        <br>
-                        <div style="background: #31b0d5 ; padding: 1px;">
-                            <h2 style=""> Gerenciar banco de dados</h2>
+                            </h4>
                         </div>
-
-                        <br>
-                        <form action="" method="POST">
-                            <h2>Apagar todos os apostadores  </h2>
-                            <input type="submit" name="ApagarUsuario" value="Apagar"/>
-
-                            <h2>Apagar todos os dados dos times</h2>
-                            <input type="submit" name="ApagarTimes" value="Apagar"/>
-                        </form>
-                        <br><br><br><br>
+                        <br><br>
                     </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="col-lg-8">
+                            <h4>Apagar todos os apostadores  </h4>
+                        </div>
+                        <div class="col-lg-4">
+                            <form action="" method="POST">              
+                                <input class="btn btn-danger" type="submit" name="ApagarUsuario" value="Apagar"/>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="col-lg-8">
+                            <h4>Apagar todos os dados dos times</h4>
+                        </div>
+                        <div class="col-lg-4">
+                        <form action="" method="POST"> 
+                            <input class="btn btn-danger" type="submit" name="ApagarTimes" value="Apagar"/>
+                        </form>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-12">
+                        <div class="col-lg-5">
+                            <h4>Apagar apostador expecifico</h4>
+                        </div>
+                        <form action="" method="POST"> 
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <select class="form-control" name="apagarPeloNome">
+                                    <option>-- Faça sua escolha --</option>
+                                    
+                                    <?php
+                                    $sqlIdArtilheiro = "SELECT id FROM usuario";
+                                    $resIdArtilheiro = buscaRegistro($sqlIdArtilheiro);
+
+                                    $contador2 = 1;
+                                    while ($registroIdArtilheiro = mysqli_fetch_assoc($resIdArtilheiro)) {
+                                        $IdArtilheiro[$contador2] = $registroIdArtilheiro['id'];
+                                        $contador2++;
+                                    }
+                                    
+                                    
+                                   $vot = quantDeLinhas("usuario");
+                                    for ($i = 1; $i < $vot; $i++) {
+                                        $id = $IdArtilheiro[$i];
+                                        $sql = "SELECT usuario FROM usuario WHERE id = $id";
+                                        $res_cliente = buscaRegistro($sql);
+                                        $dados2 = mysqli_fetch_assoc($res_cliente);
+                                        $A = "<option>" . $dados2['usuario'] . "</option>";
+                                        print $A;
+                                    }
+                                    
+                                    
+                                    ?>           
+                                 </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <input class="btn btn-danger" type="submit" name="ApagarPeloNome" value="Apagar"/>                            
+                        </div>
+                        </form>
+                    </div>
+                    
                 </div>
 
             </div>

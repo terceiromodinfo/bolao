@@ -22,10 +22,8 @@ if (isset($post['CadastraUsuario'])) {
     
     $sql = "INSERT INTO usuario (usuario, primeiro, segundo, terceiro, quarto, deSetimo, deOitavo, deNono, vigesimo, artilheiro) VALUES ('$nome','$um','$dois','$tres','$quatro','$desessete','$desoito','$desenove','$vinte','$artilheiro')";
     if (inserir($sql)) {
-        print("<div id='msg-success' class='alert alert-success' role='alert'>Registro incluído com sucesso </div>");
-        print"<br/>";
+        print "<script>alert(' enviado com Sucesso!');</script>";
     } else {
-
-        print("<div id='msg-success' class='alert alert-danger' role='alert'>ERRO! Registro não foi incluído</div>");
+        print "<script>alert('Email enviado com Sucesso!');</script>";
     } 
 }

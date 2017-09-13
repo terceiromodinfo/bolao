@@ -3,6 +3,8 @@ session_start();
 ?>
 <?php
     include "./testandoValor.php";
+    conexaoServidor();       
+    cadastrarTime();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -11,7 +13,7 @@ session_start();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <title>Bootstrap 101 Template</title>
+        <title>Bolão</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
@@ -33,7 +35,7 @@ session_start();
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>  
                     </button>
-                    <a href="#pageTop" class="navbar-brand">Logomarca</a>
+                    <a href="#pageTop" class="navbar-brand" style="font-weight: bold">Bolão</a>
                 </div>
                 <div class="collapse navbar-collapse menu-navegacao" id="menu-navegacao">
                     <ul class="nav navbar-nav navbar-right">
@@ -60,6 +62,30 @@ session_start();
             <div class="row">
                 <div class='col-sm-6'> 
                     <br><br>
+                    <table class="table table-hover ">
+                        <h3>Artilheiro</h3>
+                        
+                            <?php
+                            $sqlIdArtilheiro = "SELECT id FROM artilheiro";
+                            $resIdArtilheiro = buscaRegistro($sqlIdArtilheiro);
+
+                            $contador2 = 1;
+                            while ($registroIdArtilheiro = mysqli_fetch_assoc($resIdArtilheiro)) {
+                                $IdArtilheiro[$contador2] = $registroIdArtilheiro['id'];
+                                $contador2++;
+                            }
+                            $quantArtilheiros = quantDeLinhas("artilheiro");
+                            for ($i = 1; $i <= $quantArtilheiros; $i++) {
+                                $sql = "SELECT * FROM artilheiro WHERE id = $IdArtilheiro[$i]";
+                                $res = buscaRegistro($sql);
+                                $dados = mysqli_fetch_assoc($res);
+                                print "<tr>";
+                                print "<td>".$dados['nome']."</td>";
+                                print "</tr>";
+                            }
+                            ?>
+                        
+                    </table>
                     <h3 align="center">Classificação Brasileirão 2017:</h3>
                     <table class="table table-hover ">
                         <tr class="corLinhaTituloTabela info">
@@ -73,9 +99,7 @@ session_start();
                         </tr>
 
                         <?php
-                        conexaoServidor();
-                       
-                        cadastrarTime();
+                        
 
                         for ($i = 1; $i < 21; $i++) {
                             $sql = "SELECT * FROM times WHERE posicao = $i";
@@ -130,7 +154,7 @@ session_start();
                     </table>             
                 </div>   
                                         
-                <br><br><br><br>
+                <br><br>
                 <div class='col-sm-6 fundo'>
                     <h3 align="center">Tabela com a classificação dos apostadores:</h3>
                     <div class="">

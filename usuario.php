@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <title>Bootstrap 101 Template</title>
+        <title>Bolao</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
@@ -25,7 +25,7 @@
                         <span class="icon-bar"></span> 
                         <span class="icon-bar"></span>  
                     </button>
-                    <a href="#pageTop" class="navbar-brand">Logomarca</a>
+                    <a href="#pageTop" class="navbar-brand" style="font-weight: bold">Bolão</a>
                 </div>
 
 
