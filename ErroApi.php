@@ -7,10 +7,8 @@ conexaoServidor();
 $post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
 if (isset($post['ApagarUsuario'])) {
-    $sqlQuantidadeDeApostador = "SELECT COUNT(*) FROM usuario";
-    $resQuantidadeDeApostador = buscaRegistro($sqlQuantidadeDeApostador);
 
-    $valorDeUsuarios = mysqli_result($resQuantidadeDeApostador, 0);
+    $valorDeUsuarios = quantDeLinhas("usuario");
 
     /*
      * pegando os id dos apostadores 
@@ -55,28 +53,51 @@ if (isset($post['api'])) {
 
 if (isset($post['cadastraTimes'])) {
     
-    for ($a=1;$a <= 20; $a++){
+    for ($a = 1; $a <= 20; $a++) {
         $nomeDoTimes[$a] = $post["$a"];
     }
-    
-    
-            for ($i = 0; $i < 20; $i++) {
-                $posicao = $i + 1;
-                $sql = "DELETE FROM times WHERE times.posicao = $posicao;";
-                excluir($sql);
-            }
-    
-            for ($i = 0; $i < 20; $i++) {
-                $posicao = $i + 1;
-                $Nome = $nomeDoTimes[$i];
-                $sql = "INSERT INTO times (posicao,nome) VALUES ('$posicao','$Nome')";
-                inserir($sql);
-            }
-        
+
+
+    for ($i = 0; $i < 20; $i++) {
+        $posicao = $i + 1;
+        $sql = "DELETE FROM times WHERE times.posicao = $posicao;";
+        excluir($sql);
+    }
+
+    for ($i = 0; $i < 20; $i++) {
+        $posicao = $i + 1;
+        $Nome = $nomeDoTimes[$i];
+        $sql = "INSERT INTO times (posicao,nome) VALUES ('$posicao','$Nome')";
+        inserir($sql);
+    }
 }
 if (isset($post['cadastraArtilheiro'])) {
-    
+       
+        $nomeDoArtilheiro = $post["arti"];
+        
+        $sql = "INSERT INTO artilheiro (nome) VALUES ('$nomeDoArtilheiro')";
+        inserir($sql);
+       
 }
+if (isset($post['apagarArtilheiro'])) {
+    
+    $sqlIdArtilheiro = "SELECT id FROM artilheiro";
+    $resIdArtilheiro = buscaRegistro($sqlIdArtilheiro);
+
+    $contador2 = 1;
+    while ($registroIdArtilheiro = mysqli_fetch_assoc($resIdArtilheiro)) {
+        $IdArtilheiro[$contador2] = $registroIdArtilheiro['id'];
+        $contador2++;
+    }
+    $quantArtilheiros = quantDeLinhas("artilheiro");
+    for ($a = 1; $a <= $quantArtilheiros; $a++) {
+     print $IdArtilheiro[$a];
+        $sql = "DELETE FROM artilheiro WHERE artilheiro.id = $IdArtilheiro[$a]";
+        excluir($sql);
+       } 
+}
+
+
 $sqlApiOuManual = "SELECT api FROM admin";
 $resApiOuManual = buscaRegistro($sqlApiOuManual);
 $ApiOuManual = mysqli_fetch_assoc($resApiOuManual);
@@ -194,17 +215,13 @@ $escolha = $ApiOuManual['api'];
 
                             <form action="" method="POST">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                    <br>
-                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                    <br>
-                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                    <br> 
-                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
-                                    <br>
-                                    <input type="email" class="form-control" placeholder="Nome do Artilheiro">                         
+                                    <input type="text" class="form-control" name="arti" placeholder="Nome do Artilheiro">                         
                                     <br>
                                     <input type="submit" class="btn btn-success" name="cadastraArtilheiro" value="Guardar"/>
+                                    <input type="submit" class="btn btn-success" name="apagarArtilheiro" value="Apagar Artilheiros"/>
+                                    <br><br>
+                                    <label style="color: red;">Se outro jogador passar a ser um novo artilheiro sera preciso "APAGAR" para inserir um novo</label>
+                                    <label style="color: red;">Mas se apenas ouver um jogador que atigiu a mesma quantidade de gol do atual artilheiro apenas "GUARDE" um segundo ou mais</label>
                                     <br>
                                     <br>
                                 </div>
