@@ -3,6 +3,11 @@ include './funcoesBD.php';
 conexaoServidor();
 
 
+
+
+
+
+
 $idUser = $_GET['id'];
 
 $sqlPesquisaIdUser = "SELECT * FROM usuario WHERE id = $idUser";
