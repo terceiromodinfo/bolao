@@ -286,8 +286,8 @@ $escolha = $ApiOuManual['api'];
                                     <input type="submit" class="btn btn-success" name="cadastraArtilheiro" value="Guardar"/>
                                     <input type="submit" class="btn btn-success" name="apagarArtilheiro" value="Apagar Artilheiros"/>
                                     <br><br>
-                                    <label style="color: red;">Se outro jogador passar a ser um novo artilheiro sera preciso "APAGAR" para inserir um novo</label>
-                                    <label style="color: red;">Mas se apenas ouver um jogador que atigiu a mesma quantidade de gol do atual artilheiro apenas "GUARDE" um segundo ou mais</label>
+                                    <label style="color: red;">Se outro jogador passar a ser um novo artilheiro será preciso "APAGAR" para inserir um novo</label>
+                                    <label style="color: red;">Mas se apenas houver um jogador que atingiu a mesma quantidade de gol do atual artilheiro apenas "GUARDE" um segundo ou mais</label>
                                     <br>
                                     <br>
                                 </div>
@@ -309,6 +309,7 @@ $escolha = $ApiOuManual['api'];
                         <div class="col-lg-3">
                             <form action="" method="POST">
                                 <input type="submit" class="btn btn-success" name="api" value="API"/>
+                                <br>
                                 <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
                             </form>
                         </div>

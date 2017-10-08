@@ -18,7 +18,7 @@
         <![endif]-->
     </head>
 
-    <body style="background: #31b0d5" border-width= "thick">
+    <body bgcolor="#76C7FC" border-width= "thick">
 
         <br>
         <br>
