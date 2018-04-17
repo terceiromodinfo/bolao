@@ -99,29 +99,6 @@ for ($b = 1; $b <= $valorDeUsuarios; $b++) {
 
     $apostador = 0;
     
-    // textes de codigos
-    /*
-    $arrayDeTexte = ['','Corinthians','Grêmio','Santos','Palmeiras','Flamengo','Cruzeiro','Botafogo','Atlético-PR','Fluminense','Sport','Atlético-MG','Vasco','Ponte Preta','Bahia','Coritiba','Vitória','Chapecoense','Avaí','São Paulo','Atlético-GO'];
-       
-    
-    
-       for ($i = 1; $i <= sizeof($ResultFinal); $i++) {
-           $EP = $arrayDeTexte[$i];
-           $RF = $ResultFinal[$i];
-           
-           if ($EP === $RF) {
-               print $EP." = ".$RF."        ------------   ";
-               print "<br/>";
-               print "<br/>";
-           } else {
-               print $EP." != ".$RF;
-               print "<br/>";
-               print "<br/>";
-           }
-       }
-    */
-    //fim to texte
-    
     
     
     for ($i = 1; $i <= sizeof($EscDoApostador); $i++) {

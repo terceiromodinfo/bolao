@@ -100,7 +100,7 @@ function cadastrarTime() {
         $ch = curl_init();
 
         /* 2. Configura os parâmetros da requisição [request] */
-        curl_setopt($ch, CURLOPT_URL, "http://jsuol.com.br/c/monaco/utils/gestor/commons.js?file=commons.uol.com.br/sistemas/esporte/modalidades/futebol/campeonatos/dados/2017/30/dados.json");
+        curl_setopt($ch, CURLOPT_URL, "http://jsuol.com.br/c/monaco/utils/gestor/commons.js?file=commons.uol.com.br/sistemas/esporte/modalidades/futebol/campeonatos/dados/2018/30/dados.json");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
 
@@ -119,7 +119,7 @@ function cadastrarTime() {
 
         $consulta = mysqli_query(getConnection(),"select * from times");
         if (mysqli_num_rows($consulta) > 0) {
-            //echo "TEM DADOS NA TABELA";
+            
             echo "</br>";
             for ($i = 0; $i < 20; $i++) {
                 $posicao = $i + 1;
