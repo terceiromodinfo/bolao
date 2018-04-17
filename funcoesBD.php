@@ -113,7 +113,7 @@ function cadastrarTime() {
 
         /* 5. Exibe as informações de fornecedores */
         $Array = $obj;
-        $dados = $Array ["fases"]["2528"]["classificacao"]["equipe"];
+        $dados = $Array ["fases"]["2700"]["classificacao"]["equipe"];
 
         
 
