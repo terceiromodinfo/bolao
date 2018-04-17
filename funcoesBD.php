@@ -123,7 +123,7 @@ function cadastrarTime() {
             echo "</br>";
             for ($i = 0; $i < 20; $i++) {
                 $posicao = $i + 1;
-                $id = $obj ["fases"]["2528"]["classificacao"]["grupo"]["Único"][$i];
+                $id = $obj ["fases"]["2700"]["classificacao"]["grupo"]["Único"][$i];
                 $equipes = $Array ["equipes"]["$id"]["nome-comum"];
                 $pontos = $dados ["$id"]["pg"]["total"];
                 $jogos = $dados ["$id"]["j"]["total"];
@@ -139,7 +139,7 @@ function cadastrarTime() {
             //echo "NÃO TEM DADOS NA TABELA";
             for ($i = 0; $i < 20; $i++) {
                 $posicao = $i + 1;
-                $id = $obj ["fases"]["2528"]["classificacao"]["grupo"]["Único"][$i];
+                $id = $obj ["fases"]["2700"]["classificacao"]["grupo"]["Único"][$i];
                 $equipes = $Array ["equipes"]["$id"]["nome-comum"];
                 $pontos = $dados ["$id"]["pg"]["total"];
                 $jogos = $dados ["$id"]["j"]["total"];
