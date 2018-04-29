@@ -211,11 +211,9 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                         <h3>Regras sobre as pontuações: </h3>
                         
                         <p>
-                            Se acertar o time na sua posição exata ganhará <b>5 pontos</b>.
+                            Se acertar o time na sua posição exata ganhará <b>5 pontos</b>. Se acertar o time, porém em posição diferente ganhará <b>2 pontos</b>. Isso vale para os 4 primeiros e para os 4 últimos.
                         </p>
-                        <p>
-                            Se acertar o time, porém em posição diferente ganhará <b>2 pontos</b>.  Vale lembrar que se você escalou seu time <b>“qualquer time ai FC”</b> entre os quatro primeiros, ele só somará <b>2 pontos</b> em posição diferente se estiver entre os quatro primeiros, assim vale para os quatro últimos.
-                        </p>
+                       
                         <p>
                             Se acertar o artilheiro ganhará <b>10 pontos</b> (no caso de mais de um jogador ser artilheiro, as equipes que colocarem algum desses jogadores levarão os <b>10 pontos</b> na íntegra).
                         </p>
