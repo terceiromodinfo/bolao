@@ -205,10 +205,10 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                     </div>
                 </div>
                 <div class='col-sm-12'>
-                    <label>
-                        <p>
+                    
+                        
                         <h5>Regras sobre as pontuações: </h5>
-                        </p>
+                        
                         <p>
                             Se acertar o time na sua posição exata ganhará <b>5 pontos</b>.
                         </p>
@@ -222,7 +222,7 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                             Por fim, quem obtiver mais pontos levará o bolão. No caso de empate o critério de desempate será quem tiver melhor classificado na liga clássica.
                         </p>
                         
-                    </label>
+                   
                 </div>
             </div>    
         </div>    
