@@ -204,10 +204,10 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                         </div>
                     </div>
                 </div>
-                <div class='col-sm-12 danger'>
+                <div class='col-sm-12 vermelho'>
                     
                         
-                        <h5>Regras sobre as pontuações: </h5>
+                        <h3>Regras sobre as pontuações: </h3>
                         
                         <p>
                             Se acertar o time na sua posição exata ganhará <b>5 pontos</b>.
