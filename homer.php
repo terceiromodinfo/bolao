@@ -204,7 +204,7 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                         </div>
                     </div>
                 </div>
-                <div class='col-sm-12'>
+                <div class='col-sm-12 danger'>
                     
                         
                         <h5>Regras sobre as pontuações: </h5>
