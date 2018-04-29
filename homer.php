@@ -206,10 +206,22 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                 </div>
                 <div class='col-sm-12'>
                     <label>
-                        Regras: se acertar o time na sua posição exata ganhará 5 pontos. Se acertar o time, porém em posição diferente ganhará 2 pontos. Se acertar o artilheiro ganhará 10 pontos ( no caso de mais de um jogador ser artilheiro, as equipes que colocarem algum desses jogadores levarão os 10 pontos na íntegra)
-
-Por fim, quem obtiver mais pontos levará o bolão. No caso de empate o critério de desempate será quem tiver melhor classificado na liga clássica.
-
+                        <p>
+                        <h5>Regras sobre as pontuações: </h5>
+                        </p>
+                        <p>
+                            Se acertar o time na sua posição exata ganhará <b>5 pontos</b>.
+                        </p>
+                        <p>
+                            Se acertar o time, porém em posição diferente ganhará <b>2 pontos</b>.  Vale lembrar que se você escalou seu time <b>“qualquer time ai FC”</b> entre os quatro primeiros, ele só somará <b>2 pontos</b> em posição diferente se estiver entre os quatro primeiros, assim vale para os quatro últimos.
+                        </p>
+                        <p>
+                            Se acertar o artilheiro ganhará <b>10 pontos</b> (no caso de mais de um jogador ser artilheiro, as equipes que colocarem algum desses jogadores levarão os <b>10 pontos</b> na íntegra).
+                        </p>
+                        <p>
+                            Por fim, quem obtiver mais pontos levará o bolão. No caso de empate o critério de desempate será quem tiver melhor classificado na liga clássica.
+                        </p>
+                        
                     </label>
                 </div>
             </div>    
