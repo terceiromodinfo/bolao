@@ -144,7 +144,7 @@
         <div class="col-sm-4 ">
 
             <div class="form-group" align="center" style="padding-top: 10px;">
-                <h4 style="color: yellow; font-weight: bold;">Artilhero:</h4>
+                <h4 style="color: yellow; font-weight: bold;">Artilheiro:</h4>
                 </div>
 
             <table class="table table-striped" style="background: #e6e6e6">

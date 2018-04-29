@@ -200,7 +200,7 @@ conexaoServidor();
                         <br>   
                         
                             <div class="form-group" align="center">
-                                <label>Artilhero:</label>
+                                <label>Artilheiro:</label>
                             </div>
 
                             <div class="form-group">
