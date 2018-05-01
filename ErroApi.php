@@ -1,11 +1,14 @@
 <?php
+session_start();
+if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+?>
+<?php
 include "./funcoesBD.php";
 
 conexaoServidor();
 
 
 $post = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-
 if (isset($post['ApagarUsuario'])) {
 
     $valorDeUsuarios = quantDeLinhas("usuario");
@@ -92,10 +95,14 @@ if (isset($post['cadastraTimes'])) {
         $sql = "DELETE FROM times WHERE times.posicao = $posicao;";
         excluir($sql);
     }
+/* 
+ * modificação feita para o cadastro
+ * $nomeDoTimes[$posicao]; estava recebendo $i ao inves de $posicao
 
+ *  */
     for ($i = 0; $i < 20; $i++) {
         $posicao = $i + 1;
-        $Nome = $nomeDoTimes[$i];
+        $Nome = $nomeDoTimes[$posicao];
         $sql = "INSERT INTO times (posicao,nome) VALUES ('$posicao','$Nome')";
         if (inserir($sql)) {
             $Resut3 = "1";
@@ -202,7 +209,7 @@ $escolha = $ApiOuManual['api'];
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#page-top"></a></li>
                         <li>
-                            <a class="" href="index.php">Pagina Inicial</a>
+                            <a class="" href="homer.php">Pagina Inicial</a>
                         </li>
                         <li>
                             <a class="" href="Apostas.php">Apostas</a>
@@ -246,25 +253,25 @@ $escolha = $ApiOuManual['api'];
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="1"  placeholder="1º colocado">
-                                    <input type="text" class="form-control" name="2" placeholder="2º colocado">
-                                    <input type="text" class="form-control" name="3" placeholder="3º colocado">
-                                    <input type="text" class="form-control" name="4" placeholder="4º colocado">
-                                    <input type="text" class="form-control" name="5" placeholder="5º colocado">
-                                    <input type="text" class="form-control" name="6" placeholder="6º colocado">
-                                    <input type="text" class="form-control" name="7" placeholder="7º colocado">
-                                    <input type="text" class="form-control" name="8" placeholder="8º colocado">
-                                    <input type="text" class="form-control" name="9" placeholder="9º colocado">
-                                    <input type="text" class="form-control" name="10" placeholder="10º colocado">
-                                    <input type="text" class="form-control" name="11" placeholder="11º colocado">
-                                    <input type="text" class="form-control" name="12" placeholder="12º colocado">
-                                    <input type="text" class="form-control" name="13" placeholder="13º colocado">
-                                    <input type="text" class="form-control" name="14" placeholder="14º colocado">
-                                    <input type="text" class="form-control" name="15" placeholder="15º colocado">
-                                    <input type="text" class="form-control" name="16" placeholder="16º colocado">
-                                    <input type="text" class="form-control" name="17" placeholder="17º colocado">
-                                    <input type="text" class="form-control" name="18" placeholder="18º colocado">
-                                    <input type="text" class="form-control" name="19" placeholder="19º colocado">
+                                    <input type="text" class="form-control" name="1"  placeholder="1º colocado"><br>
+                                    <input type="text" class="form-control" name="2" placeholder="2º colocado"><br>
+                                    <input type="text" class="form-control" name="3" placeholder="3º colocado"><br>
+                                    <input type="text" class="form-control" name="4" placeholder="4º colocado"><br>
+                                    <input type="text" class="form-control" name="5" placeholder="5º colocado"><br>
+                                    <input type="text" class="form-control" name="6" placeholder="6º colocado"><br>
+                                    <input type="text" class="form-control" name="7" placeholder="7º colocado"><br>
+                                    <input type="text" class="form-control" name="8" placeholder="8º colocado"><br>
+                                    <input type="text" class="form-control" name="9" placeholder="9º colocado"><br>
+                                    <input type="text" class="form-control" name="10" placeholder="10º colocado"><br>
+                                    <input type="text" class="form-control" name="11" placeholder="11º colocado"><br>
+                                    <input type="text" class="form-control" name="12" placeholder="12º colocado"><br>
+                                    <input type="text" class="form-control" name="13" placeholder="13º colocado"><br>
+                                    <input type="text" class="form-control" name="14" placeholder="14º colocado"><br>
+                                    <input type="text" class="form-control" name="15" placeholder="15º colocado"><br>
+                                    <input type="text" class="form-control" name="16" placeholder="16º colocado"><br>
+                                    <input type="text" class="form-control" name="17" placeholder="17º colocado"><br>
+                                    <input type="text" class="form-control" name="18" placeholder="18º colocado"><br>
+                                    <input type="text" class="form-control" name="19" placeholder="19º colocado"><br>
                                     <input type="text" class="form-control" name="20" placeholder="20º colocado">
 
                                 </div>
@@ -297,19 +304,19 @@ $escolha = $ApiOuManual['api'];
                 </div>
             </div>
             <br>
-
-            <div class="bordad">
-                <div class="container col-sm-6 thumbnail" >
+            
+                <div class="bordad container col-sm-6 thumbnail" >
+                    
                     
                     <div class="col-lg-12">
-                        <br> 
+                        <br/> 
                         <div class="col-lg-7">
                             <h4>Escolha uma forma para o cadastro no banco</h4>
                         </div>
                         <div class="col-lg-3">
                             <form action="" method="POST">
                                 <input type="submit" class="btn btn-success" name="api" value="API"/>
-                                <br>
+                                <br/> 
                                 <input type="submit" class="btn btn-success" name="manual" value="MANUAL"/>
                             </form>
                         </div>
@@ -376,7 +383,7 @@ $escolha = $ApiOuManual['api'];
                                     
                                     
                                    $vot = quantDeLinhas("usuario");
-                                    for ($i = 1; $i < $vot; $i++) {
+                                    for ($i = 1; $i <= $vot; $i++) {
                                         $id = $IdArtilheiro[$i];
                                         $sql = "SELECT usuario FROM usuario WHERE id = $id";
                                         $res_cliente = buscaRegistro($sql);
@@ -398,8 +405,7 @@ $escolha = $ApiOuManual['api'];
                     </div>
                     
                 </div>
-
-            </div>
+         
         </div>
         <!-- Fim da Segunda col -->
 
@@ -411,3 +417,8 @@ $escolha = $ApiOuManual['api'];
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
+<?php
+}  else {
+    header("location:homer.php");
+}
+?>

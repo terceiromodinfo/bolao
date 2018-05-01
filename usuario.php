@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
     include './testeUsuario.php';
 ?>
 <!DOCTYPE html>
@@ -36,15 +39,28 @@
                             <a class="" href="homer.php">Pagina Inicial</a>
                         </li>
                         <li>
-                            <a class="" href="Apostas.php">Apostas</a>
+                            <?php
+                            if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+                            ?>
+                                <a class="" href="Apostas.php">Apostas</a>
+                            <?php
+                            } 
+                            ?>
+                            
                         </li>
                          <li>
-                            <a class="" href="ErroApi.php">Configurações</a>
+                             <?php
+                            if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+                            ?>
+                                <a class="" href="ErroApi.php">Configurações</a>
+                            <?php
+                            } 
+                            ?>
+                            
                         </li>
                         <li>
                             <a class="" href="Saindo.php">Sair</a>
                         </li>
-
                         
                     </ul>
                 </div>

@@ -40,14 +40,10 @@
                             <input type="password" class="form-control input-sm chat-input" placeholder="password" name="senha"/>
                             <br>
                             <input type = "submit" class="btn btn-primary btn-md" name = "logar" value = "fazer login"/>
-
-
+                            <br><br>
+                            <a class="btn btn-danger btn-md" href="index.php">Voltar</a>
                         </form>
-                        <br>
-                        <br>
-                        <div align="center">
-                            <a href="parciais.php" class="btn btn-lg btn-success btn-md">Ver Parciais <i class="fa fa-sign-in"></i></a>
-                       </div>
+                        
                     </div>
                 </div>
             </div>
@@ -79,7 +75,7 @@ if (isset($txtTitulo['logar'])) {
 
         $_SESSION['login'] = $login;
         $_SESSION['senha'] = $senha;
-        header("location:index.php");
+        header("location:homer.php");
     } else {
         print "<label>
 			<p><strong>senha ou login incorretos!</p>

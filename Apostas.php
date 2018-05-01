@@ -1,6 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+?>
+<?php
 include "funcoesBD.php";
-
 ?>
 <?php header("Content-type: text/html; charset=utf-8");
 conexaoServidor();
@@ -243,3 +246,8 @@ conexaoServidor();
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
+<?php
+}  else {
+    header("location:homer.php");
+}
+?>

@@ -190,12 +190,18 @@ color : #00BFFF;
     font-weight: bold;
 }
 .vermelho{
-    background: #FF0000;
+    background: orangered;
+    font-size: initial;
+    color: #FFFFFF; 
+    margin-bottom: 10px;
 }
 
-
-
-
-
-
-
+.fundoLogim{
+    background-image: url(img/campo.jpg);
+}
+.letraLogin{
+    color: #0000FF;
+    font-style: oblique;
+    font-size: 15px;
+    font-weight: bold;
+}

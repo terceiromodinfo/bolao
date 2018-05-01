@@ -41,18 +41,32 @@ session_start();
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#page-top"></a></li>
                         <li>
-                            <a class="" href="index.php">Pagina Inicial</a>
+                            <a class="" href="homer.php">Pagina Inicial</a>
                         </li>
                         <li>
-                            <a class="" href="Apostas.php">Apostas</a>
+                            <?php
+                            if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+                            ?>
+                                <a class="" href="Apostas.php">Apostas</a>
+                            <?php
+                            } 
+                            ?>
+                            
                         </li>
                          <li>
-                            <a class="" href="ErroApi.php">Configurações</a>
+                             <?php
+                            if (isset($_SESSION['login']) && isset($_SESSION['senha'])) {
+                            ?>
+                                <a class="" href="ErroApi.php">Configurações</a>
+                            <?php
+                            } 
+                            ?>
+                            
                         </li>
                         <li>
                             <a class="" href="Saindo.php">Sair</a>
                         </li>
-                        
+                                                
                     </ul>
                 </div>
             </div>
@@ -204,8 +218,8 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                         </div>
                     </div>
                 </div>
-                <div class='col-sm-12'>
-                    <div class="vermelho">
+                <div class='col-sm-12 vermelho'>
+                    
                     
                         
                         <h3>Regras sobre as pontuações: </h3>
@@ -221,7 +235,7 @@ OrangeRed;'>" . $dados2['pontos'] . "</td>";
                             Por fim, quem obtiver mais pontos levará o bolão. No caso de empate o critério de desempate será quem tiver melhor classificado na liga clássica.
                         </p>
                         
-                   </div>
+                   
                 </div>
             </div>    
         </div>    
