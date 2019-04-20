@@ -100,7 +100,7 @@ function cadastrarTime() {
         $ch = curl_init();
 
         /* 2. Configura os parâmetros da requisição [request] */
-        curl_setopt($ch, CURLOPT_URL, "http://jsuol.com.br/c/monaco/utils/gestor/commons.js?file=commons.uol.com.br/sistemas/esporte/modalidades/futebol/campeonatos/dados/2018/30/dados.json");
+        curl_setopt($ch, CURLOPT_URL, "http://jsuol.com.br/c/monaco/utils/gestor/commons.js?file=commons.uol.com.br/sistemas/esporte/modalidades/futebol/campeonatos/dados/2019/30/dados.json");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 0);
 
@@ -113,7 +113,7 @@ function cadastrarTime() {
 
         /* 5. Exibe as informações de fornecedores */
         $Array = $obj;
-        $dados = $Array ["fases"]["2700"]["classificacao"]["equipe"];
+        $dados = $Array ["fases"]["2878"]["classificacao"]["equipe"];
 
         
 
