@@ -100,7 +100,7 @@ session_start();
                             ?>
                         
                     </table>
-                    <h3 align="center">Classificação Brasileirão 2018:</h3>
+                    <h3 align="center">Classificação Brasileirão 2019:</h3>
                     <table class="table table-hover ">
                         <tr class="corLinhaTituloTabela info">
                             <th>#</th>
